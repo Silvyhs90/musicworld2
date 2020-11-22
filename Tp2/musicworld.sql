@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2020 a las 05:53:32
+-- Tiempo de generación: 22-11-2020 a las 06:51:06
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.3.20
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `musicworld`
 --
+CREATE DATABASE IF NOT EXISTS `musicworld` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `musicworld`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `admins`
 --
 
+DROP TABLE IF EXISTS `admins`;
 CREATE TABLE `admins` (
   `id` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -48,6 +51,7 @@ INSERT INTO `admins` (`id`, `email`, `nombre`, `apellido`, `password`) VALUES
 -- Estructura de tabla para la tabla `canciones`
 --
 
+DROP TABLE IF EXISTS `canciones`;
 CREATE TABLE `canciones` (
   `id_tema` int(11) UNSIGNED NOT NULL,
   `portada` varchar(100) NOT NULL,
@@ -91,6 +95,7 @@ INSERT INTO `canciones` (`id_tema`, `portada`, `descripcion`, `grupo`, `duracion
 -- Estructura de tabla para la tabla `generos`
 --
 
+DROP TABLE IF EXISTS `generos`;
 CREATE TABLE `generos` (
   `id` tinyint(3) NOT NULL,
   `nombre` varchar(50) NOT NULL
