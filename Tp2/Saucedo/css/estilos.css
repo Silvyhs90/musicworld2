@@ -6,12 +6,22 @@
 
  .cuerpo
  {
-  background-color: #e6ae47!important;
+  background-color: #2d3585!important;
   background-image: url(../css/imagenes/fondo.jpg);
-  background-repeat: repeat;
-  background-attachment: fixed;
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position:center;
   background-size: cover;
   font-family: Georgia, 'Times New Roman', Times, serif;
+ }  
+
+ .fondo2
+ {
+  background-color: #5957ca!important;
+  background-image: url(../css/imagenes/background.jpg);
+  background-repeat:repeat;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
  }  
  
 
@@ -22,7 +32,7 @@
 
 .bg-secondary
 {
-  background-color:#7b198a!important;
+  background-color:#b583bd!important;
 }
 
 .centrado

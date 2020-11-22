@@ -3,7 +3,7 @@ session_start();
 
 require __DIR__ . '/../../conn.php';
 
-//recuperar el usuario por email
+
 $sql = 'SELECT * FROM admins WHERE email = "'.$_POST['email'].'"';
 
 $query = $db->prepare($sql);
