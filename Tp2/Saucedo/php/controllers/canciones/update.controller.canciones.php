@@ -21,17 +21,18 @@ else
 
   $cancion = $query->fetch(PDO::FETCH_OBJ);
   $portada = $cancion->portada; 
-
-
 }
 
-$query = $db->prepare('UPDATE canciones SET descripcion=:descripcion, genero_id=:genero_id, portada = :portada WHERE id_tema = :id_tema');
+$query = $db->prepare('UPDATE canciones SET descripcion=:descripcion, genero_id=:genero_id, portada = :portada, duracion = :duracion, link = :link, grupo = :grupo WHERE id_tema = :id_tema');
 
 $query->execute([
     ':id_tema' => $_POST["id_tema"],
     ':descripcion' => $_POST["descripcion"],
     ':genero_id' => $_POST["genero_id"],
-    ':portada' => $portada
+    ':portada' => $portada,
+    ':duracion' => $_POST["duracion"],
+    ':link' => $_POST["link"],
+    ':grupo' => $_POST["grupo"]
 ]);
 
 $_SESSION['alert'] = [

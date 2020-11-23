@@ -14,15 +14,16 @@ else
 {
     $portada = "";
 }
-$sql= 'INSERT INTO canciones (id_tema, descripcion, grupo, genero_id, portada) VALUES
- (null, :descripcion, :grupo, :genero_id, :portada )';
+$sql= 'INSERT INTO canciones (id_tema, descripcion, grupo, genero_id, portada, duracion, link) VALUES  (null, :descripcion, :grupo, :genero_id, :portada, :duracion, :link)';
 
 $query = $db->prepare($sql);
 $query->execute([
    ':descripcion' => $_POST["descripcion"],
    ':grupo' => $_POST["grupo"],
    ':genero_id' => $_POST["genero_id"],
-   ':portada' => $portada   
+   ':portada' => $portada,
+   ':duracion' => $_POST["duracion"],
+   ':link' => $_POST["link"]   
     ]);
 
 $_SESSION['alert'] = [

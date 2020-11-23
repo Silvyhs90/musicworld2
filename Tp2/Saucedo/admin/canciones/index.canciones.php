@@ -12,7 +12,7 @@ require __DIR__ . '/../../php/controllers/canciones/index.controller.canciones.p
             <link rel="stylesheet" href="/tp2/saucedo/css/estilos.css">
             </head>
             <body class="fondo2 container">
-            <h1 class="h3">Admin index canciones <span class="fa fa-music"></span></h1>
+            <h1 class="h3 my-4">Admin index canciones <span class="fa fa-music"></span></h1>
                 <div class="container">
                     <div class="row">
                        <div class="col-md-12">
@@ -26,21 +26,27 @@ require __DIR__ . '/../../php/controllers/canciones/index.controller.canciones.p
                         <table class="table table-bordered striped bg-light">
                         <a href="agregar.canciones.php" class="btn btn-warning mt-2 ml-5 mb-3"><span class="fa fa-folder-plus"></span></a>            
                     <thead>
-                          <tbody>
+                          <tbody class="container">
                             <tr>
                                 <td>Album</td>
                                 <td>Titulo Cancion</td>
-                                <td>ID Genero</td>
+                                <td>Nombre Banda</td>
+                                <td>Genero</td>
+                                <td>Duracion</td>
+                                <td>Link</td>
                                 <td>Acciones</td>
                             </tr>
                     </thead>                   
                             <?php foreach($canciones as $cancion): ?>
                           <tr>
-                               <td>
-                                    <img src="/tp2/saucedo/images/<?php echo $cancion->portada; ?>" class="container-content" width="400" height="350" alt="foto album">
+                           <td>
+                               <img src="/tp2/saucedo/images/<?php echo $cancion->portada; ?>" class="container-content" width="300" height="250" alt="foto album">
                                 </td>
                                <td>
                                    <?php echo $cancion->descripcion;?>
+                                </td>
+                                <td>
+                                   <?php echo $cancion->grupo;?>
                                 </td>
                                 <td>
                                     <?php foreach($generos as $genero): ?>
@@ -48,10 +54,16 @@ require __DIR__ . '/../../php/controllers/canciones/index.controller.canciones.p
                                         echo $genero->nombre ?> 
                                     <?php endforeach; ?>
                                </td>
-                                  <td>
-                                       <a href="edit.canciones.php?id=<?php echo $cancion->id_tema; ?>" class="btn btn-primary"><span class="fa fa-edit"></span></a>
-                                        <a href="delete.canciones.php?id=<?php echo $cancion->id_tema; ?>" onclick="return confirm('Seguro que queres eliminar la cancion?');" class="btn btn-danger bg-danger"><span class="fa fa-trash-alt"></span></a>
-                                  </td>
+                            <td>
+                                   <?php echo $cancion->duracion;?>
+                              </td>
+                                <td>
+                                   <?php echo $cancion->link;?>
+                                </td>         
+                            <td>
+                               <a href="edit.canciones.php?id=<?php echo $cancion->id_tema; ?>" class="btn btn-primary mb-2"><span class="fa fa-edit"></span></a>
+                               <a href="delete.canciones.php?id=<?php echo $cancion->id_tema; ?>" onclick="return confirm('Seguro que queres eliminar la cancion?');" class="btn btn-danger bg-danger mb-5"><span class="fa fa-trash-alt"></span></a>
+                              </td>              
                            </tr>
                             <?php endforeach; ?>
                         </tbody>

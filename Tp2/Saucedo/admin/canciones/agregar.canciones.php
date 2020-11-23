@@ -38,6 +38,14 @@
                             <input type="file" class="form-control" id="portada" name="portada" value="">
                         </div>
                         <div class="form-group">
+                            <label for="duracion">Duracion</label>
+                            <input type="text" class="form-control" id="duracion" name="duracion" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="link">Link</label>
+                            <input type="text" class="form-control" id="link" name="link" value="">
+                        </div>
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </div>
                         </form>
