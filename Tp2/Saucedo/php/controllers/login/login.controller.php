@@ -11,7 +11,7 @@ $query->execute();
 $usuario = $query->fetch(PDO::FETCH_OBJ);
 
 
-if($usuario && $usuario->password == $_POST['password'])
+if($usuario && password_verify($_POST['password'],$usuario->password))
 {
    $_SESSION['auth'] = true;
    $_SESSION['id'] = $usuario->id;
@@ -25,4 +25,5 @@ else
     'text' => 'El usuario o la contraseña son incorrectos'
     ];
 header('location: /tp2/saucedo/login/acceder.php');
+
 }

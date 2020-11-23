@@ -12,7 +12,17 @@ if (isset($_FILES['portada']) && $_FILES['portada']['tmp_name']) {
 }
 else 
 {
-    $portada = "";
+    $query = $db->prepare('SELECT * from canciones  WHERE id_tema = :id_tema');
+
+    $query->execute([
+    ':id_tema' => $_POST["id_tema"]
+   
+]);
+
+  $cancion = $query->fetch(PDO::FETCH_OBJ);
+  $portada = $cancion->portada; 
+
+
 }
 
 $query = $db->prepare('UPDATE canciones SET descripcion=:descripcion, genero_id=:genero_id, portada = :portada WHERE id_tema = :id_tema');

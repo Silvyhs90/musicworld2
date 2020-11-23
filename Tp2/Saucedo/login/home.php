@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/tp2/saucedo/index.php">LogOut</a>
+                            <a class="nav-link" href="/tp2/saucedo/login/logout.php">LogOut</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/tp2/saucedo/admin/canciones/index.canciones.php"> Administrar Canciones</a>

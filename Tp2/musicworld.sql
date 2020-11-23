@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2020 a las 06:51:06
+-- Tiempo de generación: 23-11-2020 a las 00:53:04
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.3.20
 
@@ -30,12 +30,14 @@ USE `musicworld`;
 --
 
 DROP TABLE IF EXISTS `admins`;
-CREATE TABLE `admins` (
+CREATE TABLE IF NOT EXISTS `admins` (
   `id` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
   `apellido` varchar(50) DEFAULT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -43,7 +45,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `email`, `nombre`, `apellido`, `password`) VALUES
-(1, 'admin@email.com', NULL, NULL, '123456');
+(1, 'admin@email.com', NULL, NULL, '$2y$10$bxu6OSGJ120G0OZrDow9Qutpl/TbH5WbTxzbN1gDhIJUsWBUKhT86');
 
 -- --------------------------------------------------------
 
@@ -52,15 +54,17 @@ INSERT INTO `admins` (`id`, `email`, `nombre`, `apellido`, `password`) VALUES
 --
 
 DROP TABLE IF EXISTS `canciones`;
-CREATE TABLE `canciones` (
-  `id_tema` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `canciones` (
+  `id_tema` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `portada` varchar(100) NOT NULL,
   `descripcion` varchar(200) NOT NULL,
   `grupo` varchar(200) NOT NULL,
   `duracion` varchar(100) DEFAULT NULL,
   `link` varchar(100) DEFAULT NULL,
-  `genero_id` tinyint(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `genero_id` tinyint(3) NOT NULL,
+  PRIMARY KEY (`id_tema`),
+  KEY `genero_id` (`genero_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `canciones`
@@ -96,10 +100,11 @@ INSERT INTO `canciones` (`id_tema`, `portada`, `descripcion`, `grupo`, `duracion
 --
 
 DROP TABLE IF EXISTS `generos`;
-CREATE TABLE `generos` (
-  `id` tinyint(3) NOT NULL,
-  `nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS `generos` (
+  `id` tinyint(3) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `generos`
@@ -116,46 +121,6 @@ INSERT INTO `generos` (`id`, `nombre`) VALUES
 (8, 'alternativo'),
 (9, 'Electro'),
 (10, 'Glam metal');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `admins`
---
-ALTER TABLE `admins`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- Indices de la tabla `canciones`
---
-ALTER TABLE `canciones`
-  ADD PRIMARY KEY (`id_tema`),
-  ADD KEY `genero_id` (`genero_id`);
-
---
--- Indices de la tabla `generos`
---
-ALTER TABLE `generos`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `canciones`
---
-ALTER TABLE `canciones`
-  MODIFY `id_tema` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
---
--- AUTO_INCREMENT de la tabla `generos`
---
-ALTER TABLE `generos`
-  MODIFY `id` tinyint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas

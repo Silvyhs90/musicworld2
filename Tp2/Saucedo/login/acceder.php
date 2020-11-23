@@ -23,7 +23,7 @@
                 background-image: url(images/fondo_admin.jpg);
                 filter: blur(2px) grayscale(60%);
             }
-                </style>
+    </style>
             <body>
             <div class="container">
            <div class="row justify-content-center">
